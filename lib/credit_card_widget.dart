@@ -154,7 +154,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: const <BoxShadow>[
           BoxShadow(
             color: Colors.black26,
@@ -297,29 +297,49 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  height: 8,
+                  height: 16,
                 ),
                 getChipImage(),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      widget.cardNumber.isEmpty || widget.cardNumber == null
-                          ? 'XXXX XXXX XXXX XXXX'
-                          : widget.cardNumber,
-                      style: widget.textStyle ?? defaultTextStyle,
-                    ),
+                Container(
+                  height: 16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Text(
+                    widget.cardNumber.isEmpty || widget.cardNumber == null
+                        ? 'XXXX XXXX XXXX XXXX'
+                        : widget.cardNumber,
+                    style: widget.textStyle ?? defaultTextStyle,
                   ),
+                ),
+                Container(
+                  height: 8,
                 ),
                 Expanded(
                   flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      widget.expiryDate.isEmpty || widget.expiryDate == null
-                          ? 'MM/YY'
-                          : widget.expiryDate,
-                      style: widget.textStyle ?? defaultTextStyle,
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          'Expiry :',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'halter',
+                            fontSize: 9,
+                            package: 'flutter_credit_card',
+                          ),
+                        ),
+                        Container(
+                          width: 16,
+                        ),
+                        Text(
+                          widget.expiryDate.isEmpty || widget.expiryDate == null
+                              ? 'MM/YY'
+                              : widget.expiryDate,
+                          style: widget.textStyle ?? defaultTextStyle,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -334,7 +354,12 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                           : widget.cardHolderName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: widget.textStyle ?? defaultTextStyle,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'halter',
+                        fontSize: 14,
+                        package: 'flutter_credit_card',
+                      ),
                     ),
                   ),
                 ),
@@ -344,7 +369,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
+              padding:
+                  const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
               child: getCardTypeIcon(widget.cardNumber),
             ),
           ),
