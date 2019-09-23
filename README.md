@@ -78,3 +78,4 @@ samples, guidance on mobile development, and a full API reference.
 ## Credit
 
 This package's animation is inspired from from this [Dribbble](https://dribbble.com/shots/2187649-Credit-card-Checkout-flow-AMEX) art.
+This package is basend on  [flutter_credit_card](https://github.com/simformsolutions/flutter_credit_card).
