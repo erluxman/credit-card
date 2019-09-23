@@ -205,8 +205,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                         Expanded(
                           flex: 9,
                           child: Container(
-                            height: 48,
-                            color: Colors.white70,
+                            height: 40,
+                            color: const Color(0xffdddddd),
                           ),
                         ),
                         Expanded(
@@ -322,7 +322,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Expiry :',
+                          'Expiry',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
@@ -691,8 +691,8 @@ Container getChipImage() {
     margin: const EdgeInsets.symmetric(horizontal: 16),
     child: Image.asset(
       'icons/chip.png',
-      height: 64,
-      width: 64,
+      height: 52,
+      width: 52,
       package: 'flutter_credit_card',
     ),
   );

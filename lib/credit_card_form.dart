@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
-
 import 'credit_card_model.dart';
+import 'credit_card_widget.dart';
 
 class CreditCardForm extends StatefulWidget {
   const CreditCardForm({
