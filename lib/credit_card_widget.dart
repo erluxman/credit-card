@@ -170,7 +170,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           (orientation == Orientation.portrait ? height / 4 : height / 2),
       child: Stack(
         children: <Widget>[
-          getRandomBackground(widget.height, widget.width),
+          getRandomBackground(widget.height, widget.width ?? width),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
@@ -675,13 +675,22 @@ String randomPic = 'https://placeimg.com/680/400/nature';
 
 Container getRandomBackground(double height, double width) {
   return Container(
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(16.0),
-      child: Image.network(
-        randomPic,
-        width: width,
-        height: height,
-      ),
+    child: Flex(
+      direction: Axis.horizontal,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Image.network(
+              randomPic,
+              width: width,
+              height: height,
+              fit: BoxFit.cover,
+            ),
+          ),
+        )
+      ],
     ),
   );
 }
