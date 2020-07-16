@@ -3,6 +3,8 @@ import 'package:credit_card/credit_card_form.dart';
 import 'package:credit_card/credit_card_model.dart';
 import 'package:credit_card/flutter_credit_card.dart';
 
+import 'colors/light_colors.dart';
+
 void main() => runApp(MySample());
 
 class MySample extends StatefulWidget {
@@ -28,11 +30,13 @@ class MySampleState extends State<MySample> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
+        backgroundColor: LightColors.white,
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Column(
             children: <Widget>[
               CreditCardWidget(
+                cardBgColor: LightColors.kGreen,
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
                 cardHolderName: cardHolderName,
@@ -42,8 +46,8 @@ class MySampleState extends State<MySample> {
               Expanded(
                 child: SingleChildScrollView(
                   child: CreditCardForm(
-                    onCreditCardModelChange: onCreditCardModelChange,
-                  ),
+                      onCreditCardModelChange: onCreditCardModelChange,
+                   ),
                 ),
               )
             ],
