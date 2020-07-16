@@ -45,3 +45,7 @@ flutter:
     - family: credit-card
       fonts:
         - asset: font/credit-card.ttf
+
+    - family: Jannat
+      fonts:
+        - asset: font/jannat_regular.ttf
