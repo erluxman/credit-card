@@ -239,7 +239,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       )
                     : widget.cardHolderNameInputDecoration,
                 keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
+                textInputAction: TextInputAction.done,
               ),
             ),
           ],
