@@ -182,7 +182,6 @@ class _CreditCardFormState extends State<CreditCardForm> {
                               hintText: 'MM/YY')
                           : widget.expiryDateInputDecoration,
                       keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.next,
                     ),
                   ),
                 ),
@@ -210,7 +209,6 @@ class _CreditCardFormState extends State<CreditCardForm> {
                             )
                           : widget.cvvInputDecoration,
                       keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.done,
                       onChanged: (String text) {
                         setState(() {
                           cvvCode = text;

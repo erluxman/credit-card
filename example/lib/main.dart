@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card/credit_card_form.dart';
 import 'package:credit_card/credit_card_model.dart';
@@ -5,7 +6,9 @@ import 'package:credit_card/flutter_credit_card.dart';
 
 import 'colors/light_colors.dart';
 
-void main() => runApp(MySample());
+void main() => runApp(
+      DevicePreview(enabled: true, builder:(context) => MySample()),
+    );
 
 class MySample extends StatefulWidget {
   @override
@@ -46,8 +49,8 @@ class MySampleState extends State<MySample> {
               Expanded(
                 child: SingleChildScrollView(
                   child: CreditCardForm(
-                      onCreditCardModelChange: onCreditCardModelChange,
-                   ),
+                    onCreditCardModelChange: onCreditCardModelChange,
+                  ),
                 ),
               )
             ],

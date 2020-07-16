@@ -149,7 +149,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           TextStyle(
             color: LightColors.kBlue,
             fontFamily: 'halter',
-            fontSize: 16,
+           fontSize: MediaQuery.of(context).size.height*0.015,
             package: 'credit_card',
           ),
         );
@@ -276,7 +276,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         );
 
     return Container(
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(5),
       width: widget.width ?? width,
       height: widget.height ??
           (orientation == Orientation.portrait ? height / 4 : height / 2),
@@ -299,9 +299,17 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  height: 16,
+                  height: 15,
                 ),
-                getChipImage(),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Image.asset(
+                    'icons/chip.png',
+                    height: MediaQuery.of(context).size.height*0.04,
+                    width: MediaQuery.of(context).size.height*0.04,
+                    package: 'credit_card',
+                  ),
+                ),
                 Container(
                   height: 16,
                 ),
@@ -313,7 +321,6 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                         : widget.cardNumber,
                     style: widget.textStyle ?? defaultTextStyle,
                   ),
-                
                 ),
                 Container(
                   height: 8,
@@ -325,11 +332,11 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Expiry',
+                          'Exp. Date',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
-                            fontSize: 9,
+                            fontSize: MediaQuery.of(context).size.height*0.01,
                             package: 'credit_card',
                           ),
                         ),
@@ -360,7 +367,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'halter',
-                        fontSize: 14,
+                       fontSize: MediaQuery.of(context).size.height*0.015,
                         package: 'credit_card',
                       ),
                     ),
@@ -684,9 +691,10 @@ Container getRandomBackground(double height, double width) {
       children: <Widget>[
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
-            child: Container(color: LightColors.kGreen,)
-          ),
+              borderRadius: BorderRadius.circular(16.0),
+              child: Container(
+                color: LightColors.kGreen,
+              )),
         )
       ],
     ),
