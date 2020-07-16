@@ -166,7 +166,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         ],
         gradient: backgroundGradientColor,
       ),
-      margin: const EdgeInsets.all(16),
+ margin: const EdgeInsets.all(10),
       width: widget.width ?? width,
       height: widget.height ??
           (orientation == Orientation.portrait ? height / 4 : height / 2),
@@ -276,7 +276,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         );
 
     return Container(
-      margin: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(10),
       width: widget.width ?? width,
       height: widget.height ??
           (orientation == Orientation.portrait ? height / 4 : height / 2),
