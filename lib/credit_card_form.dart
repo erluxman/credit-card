@@ -202,11 +202,13 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(3),
                       ],
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'CVV',
-                        hintText: 'XXX',
-                      ),
+                      decoration: widget.cvvInputDecoration == null
+                          ? InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'CVV',
+                              hintText: 'XXX',
+                            )
+                          : widget.cvvInputDecoration,
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.done,
                       onChanged: (String text) {
@@ -230,10 +232,12 @@ class _CreditCardFormState extends State<CreditCardForm> {
                         color: widget.textColor,
                       )
                     : widget.textStyle,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Card Holder',
-                ),
+                decoration: widget.cardHolderNameInputDecoration == null
+                    ? InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Card Holder',
+                      )
+                    : widget.cardHolderNameInputDecoration,
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
