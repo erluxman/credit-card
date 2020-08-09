@@ -151,7 +151,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           TextStyle(
             color: LightColors.kBlue,
             fontFamily: 'halter',
-            fontSize: widget.textSize ?? MediaQuery.of(context).size.height * 0.015,
+            fontSize: MediaQuery.of(context).size.height * 0.015,
             package: 'credit_card',
           ),
         );
@@ -230,7 +230,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                                             ? widget.cvvCode.substring(0, 3)
                                             : widget.cvvCode,
                                 maxLines: 1,
-                                style:  defaultTextStyle,
+                                style: defaultTextStyle,
                               ),
                             ),
                           ),
@@ -272,7 +272,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           TextStyle(
             color: Colors.white,
             fontFamily: 'halter',
-            fontSize: 16,
+            fontSize: widget.textSize ?? 16,
             package: 'credit_card',
           ),
         );
@@ -323,9 +323,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                         ? 'XXXX XXXX XXXX XXXX'
                         : widget.cardNumber,
                     style: widget.textStyle ?? defaultTextStyle,
-                 
                   ),
-                  
                 ),
                 Container(
                   height: 8,
@@ -341,7 +339,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
-                            fontSize: MediaQuery.of(context).size.height * 0.01,
+                            fontSize: widget.textSize !=null
+                                ? widget.textSize - 5
+                                : MediaQuery.of(context).size.height * 0.01,
                             package: 'credit_card',
                           ),
                         ),
@@ -372,7 +372,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'halter',
-                        fontSize: MediaQuery.of(context).size.height * 0.015,
+                        fontSize: widget.textSize !=null
+                                ? widget.textSize 
+                                : MediaQuery.of(context).size.height * 0.01,
                         package: 'credit_card',
                       ),
                     ),

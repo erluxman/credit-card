@@ -44,7 +44,7 @@ class MySampleState extends State<MySample> {
                 expiryDate: expiryDate,
                 cardHolderName: cardHolderName,
                 cvvCode: cvvCode,
-                
+             //   textSize: 20,
                 showBackView: isCvvFocused,
               ),
               Expanded(
