@@ -16,6 +16,7 @@ class CreditCardWidget extends StatefulWidget {
     this.height,
     this.width,
     this.textStyle,
+    this.textSize,
     this.cardBgColor = const Color(0xff1b447b),
   })  : assert(cardNumber != null),
         assert(showBackView != null),
@@ -26,6 +27,7 @@ class CreditCardWidget extends StatefulWidget {
   final String cardHolderName;
   final String cvvCode;
   final TextStyle textStyle;
+  final double textSize;
   final Color cardBgColor;
   final bool showBackView;
   final Duration animationDuration;
@@ -149,7 +151,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           TextStyle(
             color: LightColors.kBlue,
             fontFamily: 'halter',
-            fontSize: MediaQuery.of(context).size.height * 0.015,
+            fontSize: widget.textSize ?? MediaQuery.of(context).size.height * 0.015,
             package: 'credit_card',
           ),
         );
