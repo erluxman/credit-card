@@ -7,7 +7,7 @@ import 'package:credit_card/flutter_credit_card.dart';
 import 'colors/light_colors.dart';
 
 void main() => runApp(
-      DevicePreview(enabled: true, builder:(context) => MySample()),
+      DevicePreview(enabled: false, builder:(context) => MySample()),
     );
 
 class MySample extends StatefulWidget {
@@ -44,6 +44,7 @@ class MySampleState extends State<MySample> {
                 expiryDate: expiryDate,
                 cardHolderName: cardHolderName,
                 cvvCode: cvvCode,
+                
                 showBackView: isCvvFocused,
               ),
               Expanded(

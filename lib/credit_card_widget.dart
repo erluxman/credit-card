@@ -149,7 +149,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           TextStyle(
             color: LightColors.kBlue,
             fontFamily: 'halter',
-           fontSize: MediaQuery.of(context).size.height*0.015,
+            fontSize: MediaQuery.of(context).size.height * 0.015,
             package: 'credit_card',
           ),
         );
@@ -166,7 +166,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
         ],
         gradient: backgroundGradientColor,
       ),
- margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       width: widget.width ?? width,
       height: widget.height ??
           (orientation == Orientation.portrait ? height / 4 : height / 2),
@@ -228,7 +228,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                                             ? widget.cvvCode.substring(0, 3)
                                             : widget.cvvCode,
                                 maxLines: 1,
-                                style: widget.textStyle ?? defaultTextStyle,
+                                style:  defaultTextStyle,
                               ),
                             ),
                           ),
@@ -305,22 +305,25 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   child: Image.asset(
                     'icons/chip.png',
-                    height: MediaQuery.of(context).size.height*0.04,
-                    width: MediaQuery.of(context).size.height*0.04,
+                    height: MediaQuery.of(context).size.height * 0.04,
+                    width: MediaQuery.of(context).size.height * 0.04,
                     package: 'credit_card',
                   ),
                 ),
                 Container(
                   height: 16,
                 ),
-                Padding(
+                Container(
+                  width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.only(left: 16),
                   child: Text(
                     widget.cardNumber.isEmpty || widget.cardNumber == null
                         ? 'XXXX XXXX XXXX XXXX'
                         : widget.cardNumber,
                     style: widget.textStyle ?? defaultTextStyle,
+                 
                   ),
+                  
                 ),
                 Container(
                   height: 8,
@@ -336,7 +339,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
-                            fontSize: MediaQuery.of(context).size.height*0.01,
+                            fontSize: MediaQuery.of(context).size.height * 0.01,
                             package: 'credit_card',
                           ),
                         ),
@@ -367,7 +370,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'halter',
-                       fontSize: MediaQuery.of(context).size.height*0.015,
+                        fontSize: MediaQuery.of(context).size.height * 0.015,
                         package: 'credit_card',
                       ),
                     ),
@@ -376,14 +379,14 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               ],
             ),
           ),
-          // Align(
-          //   alignment: Alignment.bottomRight,
-          //   child: Padding(
-          //     padding:
-          //         const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-          //     child: getCardTypeIcon(widget.cardNumber),
-          //   ),
-          // ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+              child: getCardTypeIcon(widget.cardNumber),
+            ),
+          ),
         ],
       ),
     );
@@ -474,7 +477,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     switch (detectCCType(cardNumber)) {
       case CardType.visa:
         icon = Image.asset(
-          'icons/visa.png',
+          'icons/visa_logo.png',
           height: 64,
           width: 64,
           package: 'credit_card',
@@ -484,7 +487,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       case CardType.americanExpress:
         icon = Image.asset(
-          'icons/amex.png',
+          'icons/amex_logo.png',
           height: 64,
           width: 64,
           package: 'credit_card',
@@ -494,7 +497,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       case CardType.mastercard:
         icon = Image.asset(
-          'icons/mastercard.png',
+          'icons/master_card.png',
           height: 64,
           width: 64,
           package: 'credit_card',
