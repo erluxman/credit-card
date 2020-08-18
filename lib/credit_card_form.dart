@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'colors/light_colors.dart';
 import 'credit_card_model.dart';
 import 'credit_card_widget.dart';
 

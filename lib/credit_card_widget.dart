@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'colors/light_colors.dart';
-
 class CreditCardWidget extends StatefulWidget {
   const CreditCardWidget({
     Key key,
@@ -149,7 +147,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
   ) {
     final TextStyle defaultTextStyle = Theme.of(context).textTheme.title.merge(
           TextStyle(
-            color: LightColors.kBlue,
+            color: const Color(0xFF273240),
             fontFamily: 'halter',
             fontSize: MediaQuery.of(context).size.height * 0.015,
             package: 'credit_card',
@@ -196,7 +194,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                   child: Container(
                     margin: const EdgeInsets.only(top: 16),
                     height: 48,
-                    color: LightColors.kBlue,
+                    color: const Color(0xFF273240),
                   ),
                 ),
                 Expanded(
@@ -700,7 +698,7 @@ Container getRandomBackground(double height, double width) {
           child: ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
               child: Container(
-                color: LightColors.kGreen,
+                color: Colors.black,
               )),
         )
       ],
