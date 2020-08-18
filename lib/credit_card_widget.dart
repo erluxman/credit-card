@@ -58,16 +58,16 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     );
 
     backgroundGradientColor = LinearGradient(
-      // Where the linear gradient begins and ends
-      begin: Alignment.topRight,
-      end: Alignment.bottomLeft,
+      // // Where the linear gradient begins and ends
+      // begin: Alignment.topRight,
+      // end: Alignment.bottomLeft,
       // Add one stop for each color. Stops should increase from 0 to 1
-      stops: const <double>[0.1, 0.4, 0.7, 0.9],
+     // stops: const <double>[0.1, 0.4, 0.7, 0.9],
       colors: <Color>[
-        widget.cardBgColor.withOpacity(0.5),
-        widget.cardBgColor.withOpacity(0.45),
-        widget.cardBgColor.withOpacity(0.4),
-        widget.cardBgColor.withOpacity(0.3),
+        widget.cardBgColor,
+        widget.cardBgColor,
+        widget.cardBgColor,
+        widget.cardBgColor,
       ],
     );
 
@@ -339,7 +339,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
-                            fontSize: widget.textSize !=null
+                            fontSize: widget.textSize != null
                                 ? widget.textSize - 5
                                 : MediaQuery.of(context).size.height * 0.01,
                             package: 'credit_card',
@@ -372,9 +372,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'halter',
-                        fontSize: widget.textSize !=null
-                                ? widget.textSize 
-                                : MediaQuery.of(context).size.height * 0.01,
+                        fontSize: widget.textSize != null
+                            ? widget.textSize
+                            : MediaQuery.of(context).size.height * 0.01,
                         package: 'credit_card',
                       ),
                     ),
@@ -482,8 +482,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.visa:
         icon = Image.asset(
           'icons/visa_logo.png',
-          height: 64,
-          width: 64,
+          height: MediaQuery.of(context).size.height * 0.04,
+          width: MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -492,8 +492,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.americanExpress:
         icon = Image.asset(
           'icons/amex_logo.png',
-          height: 64,
-          width: 64,
+          height: MediaQuery.of(context).size.height * 0.04,
+          width: MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = true;
@@ -502,8 +502,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.mastercard:
         icon = Image.asset(
           'icons/master_card.png',
-          height: 64,
-          width: 64,
+          height: MediaQuery.of(context).size.height * 0.04,
+          width: MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -512,8 +512,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.discover:
         icon = Image.asset(
           'icons/discover.png',
-          height: 64,
-          width: 64,
+          height: MediaQuery.of(context).size.height * 0.04,
+          width: MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -521,8 +521,8 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       default:
         icon = Container(
-          height: 64,
-          width: 64,
+          height: MediaQuery.of(context).size.height * 0.04,
+          width: MediaQuery.of(context).size.height * 0.04,
         );
         isAmex = false;
         break;

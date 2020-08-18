@@ -175,12 +175,11 @@ class _CreditCardFormState extends State<CreditCardForm> {
                               color: widget.textColor,
                             )
                           : widget.textStyle,
-                      decoration: widget.expiryDateInputDecoration == null
-                          ? InputDecoration(
+                      decoration: widget.expiryDateInputDecoration ??
+                          const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Expired Date',
-                              hintText: 'MM/YY')
-                          : widget.expiryDateInputDecoration,
+                              hintText: 'MM/YY'),
                       keyboardType: TextInputType.number,
                     ),
                   ),
