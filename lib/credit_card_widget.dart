@@ -10,6 +10,7 @@ class CreditCardWidget extends StatefulWidget {
     @required this.cardHolderName,
     @required this.cvvCode,
     @required this.showBackView,
+    this.withShadow = true,
     this.animationDuration = const Duration(milliseconds: 500),
     this.height,
     this.width,
@@ -28,6 +29,8 @@ class CreditCardWidget extends StatefulWidget {
   final double textSize;
   final Color cardBgColor;
   final bool showBackView;
+  final bool withShadow;
+
   final Duration animationDuration;
   final double height;
   final double width;
@@ -60,7 +63,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       // begin: Alignment.topRight,
       // end: Alignment.bottomLeft,
       // Add one stop for each color. Stops should increase from 0 to 1
-     // stops: const <double>[0.1, 0.4, 0.7, 0.9],
+      // stops: const <double>[0.1, 0.4, 0.7, 0.9],
       colors: <Color>[
         widget.cardBgColor,
         widget.cardBgColor,
@@ -157,11 +160,11 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        boxShadow: const <BoxShadow>[
+        boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black26,
-            offset: Offset(0, 0),
-            blurRadius: 24,
+            offset: const Offset(0, 0),
+            blurRadius: widget.withShadow ? 24 : 0,
           ),
         ],
         gradient: backgroundGradientColor,
@@ -286,12 +289,12 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              boxShadow: const <BoxShadow>[
+              boxShadow: <BoxShadow>[
                 BoxShadow(
                   color: Colors.black26,
-                  offset: Offset(0, 0),
-                  blurRadius: 24,
-                )
+                  offset: const Offset(0, 0),
+                  blurRadius: widget.withShadow ? 24 : 0,
+                ),
               ],
               gradient: backgroundGradientColor,
             ),
