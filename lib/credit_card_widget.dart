@@ -179,12 +179,12 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              boxShadow: const <BoxShadow>[
+              boxShadow:  <BoxShadow>[
                 BoxShadow(
                   color: Colors.black26,
-                  offset: Offset(0, 0),
-                  blurRadius: 24,
-                )
+                  offset: const Offset(0, 0),
+                  blurRadius: widget.withShadow ? 24 : 0,
+                ),
               ],
               gradient: backgroundGradientColor,
             ),
