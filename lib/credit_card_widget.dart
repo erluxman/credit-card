@@ -16,6 +16,8 @@ class CreditCardWidget extends StatefulWidget {
     this.width,
     this.textStyle,
     this.textSize,
+    this.logoHeight,
+    this.logoWidth,
     this.cardBgColor = const Color(0xff1b447b),
   })  : assert(cardNumber != null),
         assert(showBackView != null),
@@ -34,6 +36,8 @@ class CreditCardWidget extends StatefulWidget {
   final Duration animationDuration;
   final double height;
   final double width;
+  final double logoWidth;
+  final double logoHeight;
 
   @override
   _CreditCardWidgetState createState() => _CreditCardWidgetState();
@@ -179,7 +183,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              boxShadow:  <BoxShadow>[
+              boxShadow: <BoxShadow>[
                 BoxShadow(
                   color: Colors.black26,
                   offset: const Offset(0, 0),
@@ -483,8 +487,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.visa:
         icon = Image.asset(
           'icons/visa_logo.png',
-          height: MediaQuery.of(context).size.height * 0.04,
-          width: MediaQuery.of(context).size.height * 0.04,
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -493,8 +498,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.americanExpress:
         icon = Image.asset(
           'icons/amex_logo.png',
-          height: MediaQuery.of(context).size.height * 0.04,
-          width: MediaQuery.of(context).size.height * 0.04,
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = true;
@@ -503,8 +509,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.mastercard:
         icon = Image.asset(
           'icons/master_card.png',
-          height: MediaQuery.of(context).size.height * 0.04,
-          width: MediaQuery.of(context).size.height * 0.04,
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -513,8 +520,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.discover:
         icon = Image.asset(
           'icons/discover.png',
-          height: MediaQuery.of(context).size.height * 0.04,
-          width: MediaQuery.of(context).size.height * 0.04,
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -522,8 +530,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       default:
         icon = Container(
-          height: MediaQuery.of(context).size.height * 0.04,
-          width: MediaQuery.of(context).size.height * 0.04,
+          height:
+          widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
         );
         isAmex = false;
         break;

@@ -39,6 +39,8 @@ class MySampleState extends State<MySample> {
           child: Column(
             children: <Widget>[
               CreditCardWidget(
+                // logoHeight: 70,
+                // logoWidth: 50,
                 cardBgColor: LightColors.kGreen,
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
