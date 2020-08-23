@@ -19,6 +19,7 @@ class CreditCardForm extends StatefulWidget {
       this.cardNumberInputDecoration,
       this.cvvInputDecoration,
       this.textStyle,
+      this.onTapExpDate,
       this.expiryDateInputDecoration})
       : super(key: key);
 
@@ -35,6 +36,7 @@ class CreditCardForm extends StatefulWidget {
   final InputDecoration cvvInputDecoration;
   final InputDecoration cardHolderNameInputDecoration;
   final TextStyle textStyle;
+  final Function onTapExpDate;
 
   @override
   _CreditCardFormState createState() => _CreditCardFormState();
@@ -167,7 +169,10 @@ class _CreditCardFormState extends State<CreditCardForm> {
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
                     child: TextFormField(
+                      onTap: widget.onTapExpDate ,
+                      readOnly: widget.onTapExpDate ==null ? false : true,
                       controller: _expiryDateController,
+                     
                       cursorColor: widget.cursorColor ?? themeColor,
                       style: widget.textStyle == null
                           ? TextStyle(
