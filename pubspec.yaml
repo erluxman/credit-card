@@ -16,6 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   cached_network_image: ^1.1.1
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -45,3 +46,7 @@ flutter:
     - family: credit-card
       fonts:
         - asset: font/credit-card.ttf
+
+    - family: Jannat
+      fonts:
+        - asset: font/jannat_regular.ttf
