@@ -14,6 +14,7 @@ class CreditCardForm extends StatefulWidget {
     this.themeColor,
     this.textColor = Colors.black,
     this.cursorColor,
+    this.formKey
   }) : super(key: key);
 
   final String cardNumber;
@@ -24,6 +25,7 @@ class CreditCardForm extends StatefulWidget {
   final Color themeColor;
   final Color textColor;
   final Color cursorColor;
+  final var formKey = GlobalKey<FormState>();
 
   @override
   _CreditCardFormState createState() => _CreditCardFormState();
@@ -65,7 +67,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
     creditCardModel = CreditCardModel(
         cardNumber, expiryDate, cardHolderName, cvvCode, isCvvFocused);
   }
-
+  
+  get getFormKey => formKey;
   @override
   void initState() {
     super.initState();
@@ -123,6 +126,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
         primaryColorDark: themeColor,
       ),
       child: Form(
+        key: formKey,
         child: Column(
           children: <Widget>[
             Container(
