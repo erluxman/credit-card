@@ -152,7 +152,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     BuildContext context,
     Orientation orientation,
   ) {
-    final TextStyle defaultTextStyle = Theme.of(context).textTheme.title.merge(
+    final TextStyle defaultTextStyle = Theme.of(context).textTheme.caption.merge(
           TextStyle(
             color: const Color(0xFF273240),
             fontFamily: 'halter',
@@ -273,7 +273,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     BuildContext context,
     Orientation orientation,
   ) {
-    final TextStyle defaultTextStyle = Theme.of(context).textTheme.title.merge(
+    final TextStyle defaultTextStyle = Theme.of(context).textTheme.caption.merge(
           TextStyle(
             color: Colors.white,
             fontFamily: 'halter',
