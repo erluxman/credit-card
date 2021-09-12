@@ -10,10 +10,14 @@ class CreditCardWidget extends StatefulWidget {
     @required this.cardHolderName,
     @required this.cvvCode,
     @required this.showBackView,
+    this.withShadow = true,
     this.animationDuration = const Duration(milliseconds: 500),
     this.height,
     this.width,
     this.textStyle,
+    this.textSize,
+    this.logoHeight,
+    this.logoWidth,
     this.cardBgColor = const Color(0xff1b447b),
   })  : assert(cardNumber != null),
         assert(showBackView != null),
@@ -24,11 +28,16 @@ class CreditCardWidget extends StatefulWidget {
   final String cardHolderName;
   final String cvvCode;
   final TextStyle textStyle;
+  final double textSize;
   final Color cardBgColor;
   final bool showBackView;
+  final bool withShadow;
+
   final Duration animationDuration;
   final double height;
   final double width;
+  final double logoWidth;
+  final double logoHeight;
 
   @override
   _CreditCardWidgetState createState() => _CreditCardWidgetState();
@@ -54,16 +63,16 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     );
 
     backgroundGradientColor = LinearGradient(
-      // Where the linear gradient begins and ends
-      begin: Alignment.topRight,
-      end: Alignment.bottomLeft,
+      // // Where the linear gradient begins and ends
+      // begin: Alignment.topRight,
+      // end: Alignment.bottomLeft,
       // Add one stop for each color. Stops should increase from 0 to 1
-      stops: const <double>[0.1, 0.4, 0.7, 0.9],
+      // stops: const <double>[0.1, 0.4, 0.7, 0.9],
       colors: <Color>[
-        widget.cardBgColor.withOpacity(0.5),
-        widget.cardBgColor.withOpacity(0.45),
-        widget.cardBgColor.withOpacity(0.4),
-        widget.cardBgColor.withOpacity(0.3),
+        widget.cardBgColor,
+        widget.cardBgColor,
+        widget.cardBgColor,
+        widget.cardBgColor,
       ],
     );
 
@@ -143,11 +152,11 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     BuildContext context,
     Orientation orientation,
   ) {
-    final TextStyle defaultTextStyle = Theme.of(context).textTheme.title.merge(
+    final TextStyle defaultTextStyle = Theme.of(context).textTheme.caption.merge(
           TextStyle(
-            color: Colors.black,
+            color: const Color(0xFF273240),
             fontFamily: 'halter',
-            fontSize: 16,
+            fontSize: MediaQuery.of(context).size.height * 0.015,
             package: 'credit_card',
           ),
         );
@@ -155,16 +164,16 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        boxShadow: const <BoxShadow>[
+        boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black26,
-            offset: Offset(0, 0),
-            blurRadius: 24,
+            offset: const Offset(0, 0),
+            blurRadius: widget.withShadow ? 24 : 0,
           ),
         ],
         gradient: backgroundGradientColor,
       ),
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(10),
       width: widget.width ?? width,
       height: widget.height ??
           (orientation == Orientation.portrait ? height / 4 : height / 2),
@@ -174,12 +183,12 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              boxShadow: const <BoxShadow>[
+              boxShadow: <BoxShadow>[
                 BoxShadow(
                   color: Colors.black26,
-                  offset: Offset(0, 0),
-                  blurRadius: 24,
-                )
+                  offset: const Offset(0, 0),
+                  blurRadius: widget.withShadow ? 24 : 0,
+                ),
               ],
               gradient: backgroundGradientColor,
             ),
@@ -192,7 +201,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                   child: Container(
                     margin: const EdgeInsets.only(top: 16),
                     height: 48,
-                    color: Colors.black,
+                    color: const Color(0xFF273240),
                   ),
                 ),
                 Expanded(
@@ -226,7 +235,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                                             ? widget.cvvCode.substring(0, 3)
                                             : widget.cvvCode,
                                 maxLines: 1,
-                                style: widget.textStyle ?? defaultTextStyle,
+                                style: defaultTextStyle,
                               ),
                             ),
                           ),
@@ -242,7 +251,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 16, right: 16, bottom: 16),
-                      child: getCardTypeIcon(widget.cardNumber),
+                      child: null,
                     ),
                   ),
                 ),
@@ -264,17 +273,17 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     BuildContext context,
     Orientation orientation,
   ) {
-    final TextStyle defaultTextStyle = Theme.of(context).textTheme.title.merge(
+    final TextStyle defaultTextStyle = Theme.of(context).textTheme.caption.merge(
           TextStyle(
             color: Colors.white,
             fontFamily: 'halter',
-            fontSize: 16,
+            fontSize: widget.textSize ?? 16,
             package: 'credit_card',
           ),
         );
 
     return Container(
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(10),
       width: widget.width ?? width,
       height: widget.height ??
           (orientation == Orientation.portrait ? height / 4 : height / 2),
@@ -284,12 +293,12 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              boxShadow: const <BoxShadow>[
+              boxShadow: <BoxShadow>[
                 BoxShadow(
                   color: Colors.black26,
-                  offset: Offset(0, 0),
-                  blurRadius: 24,
-                )
+                  offset: const Offset(0, 0),
+                  blurRadius: widget.withShadow ? 24 : 0,
+                ),
               ],
               gradient: backgroundGradientColor,
             ),
@@ -297,13 +306,22 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  height: 16,
+                  height: 15,
                 ),
-                getChipImage(),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Image.asset(
+                    'icons/chip.png',
+                    height: MediaQuery.of(context).size.height * 0.04,
+                    width: MediaQuery.of(context).size.height * 0.04,
+                    package: 'credit_card',
+                  ),
+                ),
                 Container(
                   height: 16,
                 ),
-                Padding(
+                Container(
+                  width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.only(left: 16),
                   child: Text(
                     widget.cardNumber.isEmpty || widget.cardNumber == null
@@ -322,11 +340,13 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Expiry',
+                          'Exp. Date',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'halter',
-                            fontSize: 9,
+                            fontSize: widget.textSize != null
+                                ? widget.textSize - 5
+                                : MediaQuery.of(context).size.height * 0.01,
                             package: 'credit_card',
                           ),
                         ),
@@ -357,7 +377,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'halter',
-                        fontSize: 14,
+                        fontSize: widget.textSize != null
+                            ? widget.textSize
+                            : MediaQuery.of(context).size.height * 0.01,
                         package: 'credit_card',
                       ),
                     ),
@@ -464,9 +486,10 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
     switch (detectCCType(cardNumber)) {
       case CardType.visa:
         icon = Image.asset(
-          'icons/visa.png',
-          height: 64,
-          width: 64,
+          'icons/visa_logo.png',
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -474,9 +497,10 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       case CardType.americanExpress:
         icon = Image.asset(
-          'icons/amex.png',
-          height: 64,
-          width: 64,
+          'icons/amex_logo.png',
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = true;
@@ -484,9 +508,10 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       case CardType.mastercard:
         icon = Image.asset(
-          'icons/mastercard.png',
-          height: 64,
-          width: 64,
+          'icons/master_card.png',
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -495,8 +520,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
       case CardType.discover:
         icon = Image.asset(
           'icons/discover.png',
-          height: 64,
-          width: 64,
+          height:
+              widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
           package: 'credit_card',
         );
         isAmex = false;
@@ -504,8 +530,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget>
 
       default:
         icon = Container(
-          height: 64,
-          width: 64,
+          height:
+          widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
+          width: widget.logoHeight ?? MediaQuery.of(context).size.height * 0.04,
         );
         isAmex = false;
         break;
@@ -681,14 +708,10 @@ Container getRandomBackground(double height, double width) {
       children: <Widget>[
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16.0),
-            child: Image.network(
-              randomPic,
-              width: width,
-              height: height,
-              fit: BoxFit.cover,
-            ),
-          ),
+              borderRadius: BorderRadius.circular(16.0),
+              child: Container(
+                color: Colors.black,
+              )),
         )
       ],
     ),

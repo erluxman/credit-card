@@ -1,9 +1,14 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:credit_card/credit_card_form.dart';
 import 'package:credit_card/credit_card_model.dart';
 import 'package:credit_card/flutter_credit_card.dart';
 
-void main() => runApp(MySample());
+import 'colors/light_colors.dart';
+
+void main() => runApp(
+      DevicePreview(enabled: false, builder: (context) => MySample()),
+    );
 
 class MySample extends StatefulWidget {
   @override
@@ -28,21 +33,27 @@ class MySampleState extends State<MySample> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
+        backgroundColor: LightColors.white,
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Column(
             children: <Widget>[
               CreditCardWidget(
+                // logoHeight: 70,
+                // logoWidth: 50,
+                cardBgColor: LightColors.kGreen,
                 cardNumber: cardNumber,
                 expiryDate: expiryDate,
                 cardHolderName: cardHolderName,
                 cvvCode: cvvCode,
+                //   textSize: 20,
                 showBackView: isCvvFocused,
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: CreditCardForm(
                     onCreditCardModelChange: onCreditCardModelChange,
+                 
                   ),
                 ),
               )
